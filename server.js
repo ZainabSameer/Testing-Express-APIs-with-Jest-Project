@@ -2,10 +2,10 @@ const express = require('express');
 const productsRouter = require('./src/routers/products.js');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
-app.use('/api/products', productsRouter); 
+app.use('/products', productsRouter); 
 
 module.exports = app;
 

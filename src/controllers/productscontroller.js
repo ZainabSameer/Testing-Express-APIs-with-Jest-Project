@@ -11,10 +11,18 @@ const getProducts = (req, res) => {
 
 
 const createProduct = (req, res) => {
-  const newProduct = { id: Products.length + 1, ...req.body };
+  const { productName, price, description, category } = req.body;
+
+  
+  if (!productName || !price || !description || !category) {
+    return res.status(400).json({ error: 'All fields are required' });
+  }
+
+  const newProduct = { id: Products.length + 1, productName, price, description, category };
   Products.push(newProduct);
   res.status(201).json(newProduct); 
 };
+
 
 
 const getProductById = (req, res) => {
